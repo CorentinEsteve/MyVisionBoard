@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ formName }} - {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex align-items-center justify-content-center h-100">
+        <section class="articles">
+            <h1 class="display-4" style="margin-top:50px;">{{ formName }}</h1>
+            <div class="form-group" style="user-select: auto;">
+                <div>
+                    {{ form(dataForm) }}
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

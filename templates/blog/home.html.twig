@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <section class="dashboard">
+
+        {% for article in articles %}   {# la variable article se créée au moment du for ; articles existe dans notre repository #}
+
+        <section class="card">
+
+            {% if article.image is not null %}<img style="width: auto; height: auto; max-width: 800px; max-height: 300px; item-align:center;" src="{{ article.image }}" alt="image-link">{% endif %}
+            {% if article.upload is not null %}<img style="width: auto; height: auto; max-width: 800px; max-height: 500px; item-align:center;" src="{{ asset("uploads/") ~ article.upload }}" alt="uploaded">{% endif %}
+            <div>
+                {% if article.title is not null %}<h4 class="card-title" style="user-select: auto;">{{ article.title }}</h4>{% endif %}
+                {% if article.content is not null %}<p class="card-text" style="user-select: auto;">{{ article.content | raw }}</p>{% endif %}
+            </div>
+       </section>
+
+        {% endfor %}
+        
+    </section>
+
+{% endblock %}
+
+
+
+
+{# Dans la catégorie {% if article.category is not null %}{{ article.category.name }}{% endif %} #}

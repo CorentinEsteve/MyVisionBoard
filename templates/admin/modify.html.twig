@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<section class="h-100">
+    <header class="container h-100">
+        <div class="d-flex align-items-center justify-content-center h-100">
+            <section class="articles" style="margin:auto;">
+                {% for article in articles %}   {# la variable article se créée au moment du for ; articles existe dans notre repository #}
+
+                <div class="card text-white bg-primary mt-3" style="min-width: 40rem; user-select: auto;">
+                    <div class="card-body" style="user-select: auto; text-align:center; padding:0px; padding-bottom:10px;">
+                        {% if article.upload is not null %}<img style="width: auto; height: auto; max-width: 800px; max-height: 300px;" src="{{ asset("uploads/") ~ article.upload }}" alt="uploaded">{% endif %}
+                        {% if article.image is not null %}<img style="width: auto; height: auto; max-width: 800px; max-height: 300px;" src="{{ article.image }}" alt="">{% endif %}
+                        {% if article.title is not null %}<h4 class="card-title" style="user-select: auto;">{{ article.title }}</h4>{% endif %}
+                        {% if article.content is not null %}<p class="card-text" style="user-select: auto; padding:0px; margin:10px;">{{ article.content | raw }}</p>{% endif %}
+                        {% for tag in article.category %}
+                            <span class="badge bg-success mb-2" style="user-select: auto;">{% if tag is not empty %}{{ category.name }}{% endif %}</span><br>
+                        {% endfor %}
+                    </div>
+                    <div class="card-header" style="user-select: auto; display: flex; flex-direction: row; justify-content: space-between;  align-items: center; border: none; border-radius:10px;">{{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}
+                        <div class="modify-buttons">
+                            <a href="{{ path('article_update', {'articleId' : article.id}) }}" class="btn btn-warning btn-sm" style="border: none;" type="button">Modifier</a>
+                            <a href="{{ path('article_delete', {'articleId' : article.id}) }}" class="btn btn-danger btn-sm" style="border: none;" type="button">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </section>
+        </div>
+    </header>
+</section>
+
+{% endblock %}

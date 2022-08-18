@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="presentation-card">
+        <h1>Hello and welcome to MyVisionBoard!</h1>
+        <p>What is a vision board?</p>
+        <p>It's a visual representation of your goals and dreams. By adding elements like picture and text to your vision board, you'll be able to clarify you goals, visualize them and accomplish them!</p>
+        <p><b>Sign in or register to start your own.</b></p>
+
+                    {% if is_granted("ROLE_USER") %}
+
+            <a href="{{ path('app_logout') }}" class="btn btn-secondary btn-sm" type="submit" style="user-select: auto;">Disconnect</a>
+
+            {% else %}
+            <a href="{{ path('app_login') }}" class="btn btn-secondary btn-sm" type="submit" style="user-select: auto; margin-right: 10px">Sign in</a>
+            <a href="{{ path('admin_register') }}" class="btn btn-secondary btn-sm" type="submit" style="user-select: auto;">Create an account</a>
+            {% endif %}
+    </div>
+
+
+{% endblock %}

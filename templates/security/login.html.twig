@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<form method="post" novalidate>
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+        </div>
+    {% endif %}
+
+    <div class="d-flex align-items-center justify-content-center h-100">
+        <section class="articles">
+            <h1 class="display-4" style="margin-top:50px;">Se connecter</h1>
+            <label for="inputUsername" style="margin-bottom:10px;">Nom d'utilisateur</label>
+            <input type="text" style="margin-bottom:10px;" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+            <label for="inputPassword" style="margin-bottom:10px;">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}">
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me" style="margin-top:20px;"> Se souvenir de moi
+                </label>
+            </div>
+        
+            <button class="form-control mt-2 mb-3 btn btn-success" type="submit">Se connecter</button>
+        </section>
+    </div>
+
+</form>
+{% endblock %}

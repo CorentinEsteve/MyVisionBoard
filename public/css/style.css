@@ -1,0 +1,62 @@
+.dashboard{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px;
+    padding: 10px;
+    border : 2px solid #404040;
+    border-radius: 10px;
+    background-color: #3A3F44;
+    max-width: 22vw;
+}
+
+.card h4{
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.card p{
+    color: rgb(202, 202, 202);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.card img{
+    border: 1px solid #404040;
+    border-radius: 10px;
+}
+
+.presentation-card{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vw;
+    border : 2px solid #404040;
+    border-radius: 10px;
+    background-color: #3A3F44;
+    padding: 15px;
+    width: 40vw;
+    text-align: center;
+}
+
+.presentation-card h1{
+    margin-bottom: 20px;
+}
+
+
+  
+/* si la taille de l'écran est 990 ou moins, les cartes prennent la taille de l'écran*/
+@media only screen and (max-width: 990px) {
+.card {
+    width:100%;
+    align-items: center;
+    text-align: center;
+    }
+}

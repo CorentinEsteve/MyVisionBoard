@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="user-select: auto;">
+    <div class="container-fluid" style="user-select: auto;">
+    
+        {% if is_granted("ROLE_USER") %}
+        <div>
+        <img src="{{ asset('images/logo.png') }}" alt="" width="35px" height="auto" class="d-inline-block align-text-top">
+        <a class="navbar-brand" href="{{ path('my_articles') }}" style="user-select: auto;">MyVisionBoard</a>
+        {% else %}
+                <img src="{{ asset('images/logo.png') }}" alt="" width="35" height="auto" class="d-inline-block align-text-top">
+        <a class="navbar-brand" href="/" style="user-select: auto;">MyVisionBoard</a>
+        {% endif %}
+        </div>
+
+        {% if is_granted("ROLE_USER") %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" style="user-select: auto;">
+        <span class="navbar-toggler-icon" style="user-select: auto;"></span>
+        </button>
+        {% endif %}
+
+        <div class="collapse navbar-collapse" id="navbarColor03" style="user-select: auto;">
+            <ul class="navbar-nav me-auto" style="user-select: auto;">
+                {% if is_granted("ROLE_USER") %}
+                <li class="nav-item" style="user-select: auto;">
+                    <a class="nav-link active" href="{{ path('article_create') }}" style="user-select: auto; padding-left:30px; padding-right:30px;">Create an element</a>
+                </li>
+
+                <li class="nav-item d-flex" style="user-select: auto;">
+                    <a class="nav-link active" href="{{ path('article_modify') }}" style="user-select: auto; padding-left:30px; padding-right:30px;">See my elements</a>
+                </li>
+
+                <li class="nav-item d-flex" style="user-select: auto;">
+                    <a class="nav-link active" href="{{ path('app_logout') }}" style="user-select: auto; padding-left:30px; padding-right:30px; color:grey;">Disconnect</a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+
+    {# {% if is_granted("ROLE_USER") %}
+
+    <a href="{{ path('app_logout') }}" class="btn btn-secondary btn-sm" type="submit" style="user-select: auto;">Disconnect</a>
+
+    {% endif %} #}
+</nav>
