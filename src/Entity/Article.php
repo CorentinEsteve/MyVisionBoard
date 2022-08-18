@@ -30,8 +30,8 @@ class Article
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'articles')]
     private $category;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $upload;
+    #[ORM\Column(type: 'string', length: 25, nullable: true)]
+    private ?string $upload = null;
 
     public function __construct()
     {
@@ -111,12 +111,12 @@ class Article
         return $this;
     }
 
-    public function getUpload()
+    public function getUpload(): ?string
     {
         return $this->upload;
     }
 
-    public function setUpload($upload)
+    public function setUpload(?string $upload): self
     {
         $this->upload = $upload;
 
