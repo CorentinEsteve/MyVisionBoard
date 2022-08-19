@@ -20,7 +20,6 @@ class BlogController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $articleRepository = $entityManager->getRepository(Article::class);
-        $categories = $articleRepository->findAll();
         $articles = $articleRepository->findAll();
         $articles = $articleRepository->findBy([], ["id" => "DESC"]);
         
@@ -35,7 +34,6 @@ class BlogController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $articleRepository = $entityManager->getRepository(Article::class);
-        $categories = $articleRepository->findAll();
         $articles = $articleRepository->findAll();
         $articles = $articleRepository->findBy([], ["id" => "DESC"]);
         
@@ -75,7 +73,7 @@ class BlogController extends AbstractController
                 // Move the file to the directory where uploads are stored
                 try {
                     $uploadFile->move(
-                        $this->getParameter('upload_directory'),
+                        $this->rootPath,
                         $newFilename
                     );
                 } catch (FileException $e) {

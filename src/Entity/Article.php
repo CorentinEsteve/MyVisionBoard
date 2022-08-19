@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -33,9 +31,14 @@ class Article
     #[ORM\Column(type: 'string', length: 25, nullable: true)]
     private ?string $upload = null;
 
-    public function __construct()
+    /** string $rootPath */
+    private $rootPath;
+
+    public function __construct(string $rootPath)
     {
+        $this->rootPath = $rootPath;
         $this->createdAt = new \DateTimeImmutable('now');
+
     }
 
     //Cette méthode vide les attributs title, content et category de notre objet Article.
