@@ -31,14 +31,9 @@ class Article
     #[ORM\Column(type: 'string', length: 25, nullable: true)]
     private ?string $upload = null;
 
-    /** string $rootPath */
-    private $rootPath;
-
-    public function __construct(string $rootPath)
+    public function __construct()
     {
-        $this->rootPath = $rootPath;
         $this->createdAt = new \DateTimeImmutable('now');
-
     }
 
     //Cette méthode vide les attributs title, content et category de notre objet Article.

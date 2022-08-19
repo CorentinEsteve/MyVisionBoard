@@ -73,7 +73,7 @@ class BlogController extends AbstractController
                 // Move the file to the directory where uploads are stored
                 try {
                     $uploadFile->move(
-                        $this->rootPath,
+                        $this->getParameter('upload_directory'),
                         $newFilename
                     );
                 } catch (FileException $e) {
