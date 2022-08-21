@@ -28,7 +28,7 @@ class Article
     #[ORM\ManyToOne(targetEntity: Category::class, inversedBy: 'articles')]
     private $category;
 
-    #[ORM\Column(type: 'string', length: 25, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $upload = null;
 
     public function __construct()
