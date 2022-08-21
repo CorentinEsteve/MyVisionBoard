@@ -62,15 +62,12 @@ class BlogController extends AbstractController
             /** @var UploadedFile $uploadFile */
             $uploadFile = $articleForm->get('upload')->getData();
 
-            // this condition is needed because the 'upload' field is not required
-            // so the PDF file must be processed only when a file is uploaded
             if ($uploadFile) {
                 $originalFilename = pathinfo($uploadFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
+
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$uploadFile->guessExtension();
 
-                // Move the file to the directory where uploads are stored
                 try {
                     $uploadFile->move(
                         $this->getParameter('upload_directory'),
@@ -80,8 +77,6 @@ class BlogController extends AbstractController
                     // ... handle exception if something happens during file upload
                 }
 
-                // updates the 'uploadFilename' property to store the PDF file name
-                // instead of its contents
                 $article->setUpload($newFilename);
             }
 
