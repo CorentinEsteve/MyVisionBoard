@@ -2,16 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Tag;
 use App\Entity\Article;
-use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ArticleType extends AbstractType
@@ -33,16 +29,6 @@ class ArticleType extends AbstractType
                     'class' => 'form-control mt-2 mb-3',
                 ]
             ])
-            // ->add('category', EntityType::class, [
-            //     'label' => 'Catégorie',    
-            //     'class' => Category::class, //Classe Entity utilisé pour notre champ
-            //     'choice_label' => 'name',   //Attribut utilisé pour représenter l'Entity
-            //     'expanded' => false,        //Affichage menu déroulant
-            //     'multiple' => false,        //On ne sélectionner qu'UNE SEULE Category
-            //     'attr' => [
-            //         'class' => 'form-control mt-2 mb-3',
-            //     ],
-            // ])
             ->add('image', TextareaType::class, [
                 'label' => 'Lien de l\'image',
                 'attr' => [
@@ -50,7 +36,6 @@ class ArticleType extends AbstractType
                 ],
                 'required' => false
             ])
-
             ->add('upload', FileType::class, [
                 'label' => 'Upload an image',
                 'required' => false,
@@ -58,16 +43,7 @@ class ArticleType extends AbstractType
                 'attr' => [
                     'class' => 'form-control mt-2 mb-3',
                 ]
-            ])
-
-            ->add('submit', SubmitType::class, [
-                'label' => 'Poster l\'élément',
-                'attr' => [
-                    'style' => 'margin-top: 5px',
-                    'class' => 'btn btn-success',
-                ]
-            ]
-        );
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

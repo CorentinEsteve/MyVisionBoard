@@ -36,14 +36,6 @@ class Article
         $this->createdAt = new \DateTimeImmutable('now');
     }
 
-    //Cette méthode vide les attributs title, content et category de notre objet Article.
-    public function clearFields(): void
-    {
-        $this->title = null;
-        $this->category = null;
-        $this->content = null;
-    }
-
     public function getId(): ?int
     {
         return $this->id;

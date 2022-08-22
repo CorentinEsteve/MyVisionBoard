@@ -20,8 +20,8 @@
                     </div>
                     <div class="card-header" style="user-select: auto; display: flex; flex-direction: row; justify-content: space-between;  align-items: center; border: none; border-radius:10px;">{{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}
                         <div class="modify-buttons">
-                            <a href="{{ path('article_update', {'articleId' : article.id}) }}" class="btn btn-warning btn-sm" style="border: none;" type="button">Modifier</a>
-                            <a href="{{ path('article_delete', {'articleId' : article.id}) }}" class="btn btn-danger btn-sm" style="border: none;" type="button">Supprimer</a>
+                            <a href="{{ path('article_update', {'id' : article.id}) }}" class="btn btn-warning btn-sm" style="border: none;" type="button">Modifier</a>
+                            <a href="{{ path('article_delete', {'id' : article.id}) }}" class="btn btn-danger btn-sm" style="border: none;" type="button">Supprimer</a>
                         </div>
                     </div>
                 </div>
