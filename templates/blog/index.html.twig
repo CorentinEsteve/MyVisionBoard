@@ -2,13 +2,33 @@
 
 {% block body %}
 
-    <div class="presentation-card">
+
+    <section class="dashboard">
+
+        {% for article in articles %}   {# la variable article se créée au moment du for ; articles existe dans notre repository #}
+
+        <section class="card">
+
+            {% if article.image is not null %}<img style="width: auto; height: auto; max-width: 800px; max-height: 300px; item-align:center;" src="{{ article.image }}" alt="image-link">{% endif %}
+            {% if article.upload is not null %}<img style="width: auto; height: auto; max-width: 800px; max-height: 500px; item-align:center;" src="{{ asset("uploads/") ~ article.upload }}" alt="uploaded">{% endif %}
+            <div>
+                {% if article.title is not null %}<h4 class="card-title" style="user-select: auto;">{{ article.title }}</h4>{% endif %}
+                {% if article.content is not null %}<p class="card-text" style="user-select: auto;">{{ article.content | raw }}</p>{% endif %}
+            </div>
+       </section>
+
+        {% endfor %}
+        
+    </section>
+
+
+    {# <div class="presentation-card">
         <h1>Hello and welcome to My Vision Board!</h1>
         <h3>What is a vision board?</h3>
         <p>It's a visual representation of your goals and dreams. By adding elements like picture and text to your vision board, you'll be able to clarify you goals, visualize them and accomplish them!</p>
         <p><b>Sign in or register to start your own.</b></p>
 
-                    {% if is_granted("ROLE_USER") %}
+            {% if is_granted("ROLE_USER") %}
 
             <a href="{{ path('app_logout') }}" class="btn btn-secondary btn-sm" type="submit" style="user-select: auto;">Disconnect</a>
 
@@ -16,7 +36,7 @@
             <a href="{{ path('app_login') }}" class="btn btn-secondary btn-sm" type="submit" style="user-select: auto; margin-right: 10px">Sign in</a>
             <a href="{{ path('admin_register') }}" class="btn btn-secondary btn-sm" type="submit" style="user-select: auto;">Create an account</a>
             {% endif %}
-    </div>
+    </div> #}
 
 
 {% endblock %}

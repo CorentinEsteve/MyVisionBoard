@@ -10,22 +10,22 @@
 
     {% if app.user %}
         <div class="mb-3">
-            Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            You are connected as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Disconnect</a>
         </div>
     {% endif %}
 
     <div class="d-flex align-items-center justify-content-center h-100">
         <section class="articles">
-            <h1 class="display-4" style="margin-top:50px;">Se connecter</h1>
-            <label for="inputUsername" style="margin-bottom:10px;">Nom d'utilisateur</label>
+            <h1 class="display-4" style="margin-top:50px;">Log in</h1>
+            <label for="inputUsername" style="margin-bottom:10px;">Username</label>
             <input type="text" style="margin-bottom:10px;" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-            <label for="inputPassword" style="margin-bottom:10px;">Mot de passe</label>
+            <label for="inputPassword" style="margin-bottom:10px;">Password</label>
             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
             <input type="hidden" name="_csrf_token"
                 value="{{ csrf_token('authenticate') }}">
         
-            <button class="form-control mt-2 mb-3 btn btn-success" type="submit">Se connecter</button>
+            <button class="form-control mt-2 mb-3 btn btn-success" type="submit">Connect</button>
         </section>
     </div>
 

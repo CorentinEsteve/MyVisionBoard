@@ -81,7 +81,7 @@ class BlogController extends AbstractController
 
         //Nous transmettons notre formulaire de article à Twig
         return $this->render('blog/dataform.html.twig', [
-            'formName' => 'Créer un élément',
+            'formName' => 'Create content',
             'dataForm' => $articleForm->createView(), //createView() prépare l'affichage du form
         ]);
     }

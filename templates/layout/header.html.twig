@@ -6,8 +6,10 @@
         <img src="{{ asset('images/logo.png') }}" alt="" width="35px" height="auto" class="d-inline-block align-text-top">
         <a class="navbar-brand" href="{{ path('my_articles') }}" style="user-select: auto;">MyVisionBoard</a>
         {% else %}
-                <img src="{{ asset('images/logo.png') }}" alt="" width="35" height="auto" class="d-inline-block align-text-top">
-        <a class="navbar-brand" href="/" style="user-select: auto;">MyVisionBoard</a>
+            <img src="{{ asset('images/logo.png') }}" alt="" width="35" height="auto" class="d-inline-block align-text-top">
+            <a class="navbar-brand" href="/" style="user-select: auto;">MyVisionBoard</a>
+            <a href="{{ path('app_login') }}" class="btn btn-secondary btn-sm" type="submit" style="user-select: auto; margin-right: 10px">Sign in</a>
+
         {% endif %}
         </div>
 

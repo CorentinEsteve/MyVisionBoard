@@ -16,21 +16,21 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Titre de l\'élément',
+                'label' => 'Element title',
                 'required' => false,
                 'attr' => [
                     'class' => 'form-control mt-2 mb-3',
                 ]
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'Texte',
+                'label' => 'Text',
                 'required' => false,
                 'attr' => [
                     'class' => 'form-control mt-2 mb-3',
                 ]
             ])
             ->add('image', TextareaType::class, [
-                'label' => 'Lien de l\'image',
+                'label' => 'Image link',
                 'attr' => [
                     'class' => 'form-control mt-2 mb-3',
                 ],

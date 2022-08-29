@@ -14,14 +14,11 @@
                         {% if article.image is not null %}<img style="width: auto; height: auto; max-width: 800px; max-height: 300px;" src="{{ article.image }}" alt="">{% endif %}
                         {% if article.title is not null %}<h4 class="card-title" style="user-select: auto;">{{ article.title }}</h4>{% endif %}
                         {% if article.content is not null %}<p class="card-text" style="user-select: auto; padding:0px; margin:10px;">{{ article.content | raw }}</p>{% endif %}
-                        {% for tag in article.category %}
-                            <span class="badge bg-success mb-2" style="user-select: auto;">{% if tag is not empty %}{{ category.name }}{% endif %}</span><br>
-                        {% endfor %}
                     </div>
-                    <div class="card-header" style="user-select: auto; display: flex; flex-direction: row; justify-content: space-between;  align-items: center; border: none; border-radius:10px;">{{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }}
+                    <div class="card-header" style="user-select: auto; display: flex; flex-direction: row; justify-content: space-between;  align-items: center; border: none; border-radius:10px;">{{ article.createdAt | date('d/m/Y') }} at {{ article.createdAt | date('H:i') }}
                         <div class="modify-buttons">
-                            <a href="{{ path('article_update', {'id' : article.id}) }}" class="btn btn-warning btn-sm" style="border: none;" type="button">Modifier</a>
-                            <a href="{{ path('article_delete', {'id' : article.id}) }}" class="btn btn-danger btn-sm" style="border: none;" type="button">Supprimer</a>
+                            <a href="{{ path('article_update', {'id' : article.id}) }}" class="btn btn-warning btn-sm" style="border: none;" type="button">Modify</a>
+                            <a href="{{ path('article_delete', {'id' : article.id}) }}" class="btn btn-danger btn-sm" style="border: none;" type="button">Delete</a>
                         </div>
                     </div>
                 </div>

@@ -3,14 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Category;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,7 +49,7 @@ class SecurityController extends AbstractController
         //Nous créons notre formulaire interne
         $userForm = $this->createFormBuilder()
             ->add('username', TextType::class, [
-                'label' => 'Nom d\'utilisateur',
+                'label' => 'Username',
                 'attr' => [
                     'class' => 'form-control mt-2 mb-3',
                 ],
@@ -60,20 +58,20 @@ class SecurityController extends AbstractController
                 'type' => PasswordType::class,
                 'required' => true,
                 'first_options' => [
-                    'label' => 'Mot de passe',
+                    'label' => 'Password',
                     'attr' => [
                         'class' => 'form-control mt-2 mb-3',
                     ],
                 ],
                 'second_options' => [
-                    'label' => 'Mot de passe de confirmation',
+                    'label' => 'Confirm password',
                     'attr' => [
                         'class' => 'form-control mt-2 mb-3',
                     ],
                 ],
             ])
             ->add('roles', ChoiceType::class, [
-                'label' => 'Privilèges',
+                'label' => 'Privileges',
                 'choices' => [
                     'Role: Client' => 'ROLE_CLIENT',
                     'Role: Admin' => 'ROLE_ADMIN',
@@ -83,12 +81,6 @@ class SecurityController extends AbstractController
                 'attr' => [
                     'class' => 'form-control mt-2 mb-3',
                 ],
-            ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Inscription',
-                'attr' => [
-                    'class' => 'form-control mt-2 mb-3 btn btn-success',
-                ]
             ])
             ->getForm()
         ;
@@ -110,8 +102,8 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
         //Si notre formulaire n'est pas validé, nous le présentons à l'utilisateur
-        return $this->render('blog/dataform.html.twig', [
-            'formName' => 'Nouvel utilisateur',
+        return $this->render('security/register.html.twig', [
+            'formName' => 'New user',
             'dataForm' => $userForm->createView(),
         ]);
 
